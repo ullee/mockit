@@ -20,8 +20,6 @@
 
 <hr />
 
-<img alt="header" src="./images/demo.gif" />
-
   <h3>Features: Live Reload, Chaos Engineering, Authentication, CORS and more...</h3>
 
 [Read the Docs](https://mockit.netlify.com/) | [Edit the Docs](https://github.com/boyney123/mockit-docs)
@@ -52,42 +50,48 @@ More information about how it works, its features can be found on the docs.
 
 [Read the docs and get started](https://mockit.netlify.com/)
 
-# Getting Started
+# Getting Started with HiveMQ cloud
 
 _Make sure you have docker running_
 
 ```sh
-git clone https://github.com/boyney123/mockit.git
+git clone https://github.com/ullee/mockit.git
 ```
 
 ```sh
 cd mockit && docker-compose up --build -d
 ```
 
+```sh
+cd mockit/mocket-routes && npm install
+```
+
 Once everything is up and running go to [http://localhost:5000](http://localhost:5000) to see MockIt.
 
 For instructions on how to use MockIt please see the [documentation](https://mockit.netlify.com/docs/getting-started/routes).
 
-## Permissions
+## Mqtt Local install and running tests
 
-_If you get error: `Couldn't connect to Docker daemon at http+docker://localhost - is it running?` you might need run_ with _sudo_
+1. Make your HiveMQ account 
+- ref. https://console.hivemq.cloud/
 
-```
-sudo docker-compose up --build -d
-```
+2. Fix code 
+- cf. [code](https://github.com/ullee/mockit/blob/1e133308b2aa845aa015c108b38f7a2ffcfd391f/mockit-routes/src/index.js#L3)
 
-## Local install and running tests
-
-If you want to install and run the tests for all apps then you can run this script:
-
-```
-sh install-and-test.sh
+3. Build project
+```sh
+docker-compose up --build -d
 ```
 
-_If you have any problems with permissions you might need to chmod the file_
-
+4. Install mqtt-cli client
+```sh
+brew tap hivemq/mqtt-cli
+brew install mqtt-cli
 ```
-chmod +x install-and-test.sh && ./install-and-test.sh
+
+5. Subscribe topic
+```sh
+mqtt sub -h 572e8b3345974705bcbec7d11e7513be.s1.eu.hivemq.cloud -p 8883 -s -u ullee -pw -t 'my/test/topic'
 ```
 
 # Viewing the dashboard, server and API
@@ -150,30 +154,7 @@ MIT.
 
 ## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://medium.com/@boyney123"><img src="https://avatars1.githubusercontent.com/u/3268013?v=4" width="100px;" alt="David Boyne"/><br /><sub><b>David Boyne</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=boyney123" title="Code">💻</a> <a href="https://github.com/boyney123/mockit/commits?author=boyney123" title="Documentation">📖</a> <a href="#design-boyney123" title="Design">🎨</a> <a href="#ideas-boyney123" title="Ideas, Planning, & Feedback">🤔</a> <a href="#review-boyney123" title="Reviewed Pull Requests">👀</a> <a href="#tool-boyney123" title="Tools">🔧</a></td>
-    <td align="center"><a href="https://medium.com/@liran.tal"><img src="https://avatars1.githubusercontent.com/u/316371?v=4" width="100px;" alt="Liran Tal"/><br /><sub><b>Liran Tal</b></sub></a><br /><a href="#security-lirantal" title="Security">🛡️</a></td>
-    <td align="center"><a href="https://fb.com/RemoveU"><img src="https://avatars1.githubusercontent.com/u/19208123?v=4" width="100px;" alt="Hongarc"/><br /><sub><b>Hongarc</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=Hongarc" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://hugo.pro"><img src="https://avatars3.githubusercontent.com/u/180032?v=4" width="100px;" alt="Hugo Locurcio"/><br /><sub><b>Hugo Locurcio</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=Calinou" title="Code">💻</a></td>
-    <td align="center"><a href="http://www.andrewroberthall.co.uk"><img src="https://avatars1.githubusercontent.com/u/724328?v=4" width="100px;" alt="Andrew Hall"/><br /><sub><b>Andrew Hall</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=FattusMannus" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://grainger.xyz"><img src="https://avatars1.githubusercontent.com/u/1332395?v=4" width="100px;" alt="Peter Grainger"/><br /><sub><b>Peter Grainger</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=peterjgrainger" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/wohlben"><img src="https://avatars2.githubusercontent.com/u/9362553?v=4" width="100px;" alt="Ben"/><br /><sub><b>Ben</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=wohlben" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/MCRayRay"><img src="https://avatars1.githubusercontent.com/u/2843957?v=4" width="100px;" alt="MCRayRay"/><br /><sub><b>MCRayRay</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=MCRayRay" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/fbricon"><img src="https://avatars3.githubusercontent.com/u/148698?v=4" width="100px;" alt="Fred Bricon"/><br /><sub><b>Fred Bricon</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=fbricon" title="Code">💻</a></td>
-    <td align="center"><a href="https://blog.missj.club"><img src="https://avatars1.githubusercontent.com/u/19582252?v=4" width="100px;" alt="fliu2476"/><br /><sub><b>fliu2476</b></sub></a><br /><a href="https://github.com/boyney123/mockit/issues?q=author%3Afliu2476" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/de314"><img src="https://avatars1.githubusercontent.com/u/816693?v=4" width="100px;" alt="David Esposito"/><br /><sub><b>David Esposito</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=de314" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/mlaopane"><img src="https://avatars3.githubusercontent.com/u/23735276?v=4" width="100px;" alt="Mickaël"/><br /><sub><b>Mickaël</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=mlaopane" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/zecarrera"><img src="https://avatars1.githubusercontent.com/u/4092515?v=4" width="100px;" alt="José Carréra Alvares Neto"/><br /><sub><b>José Carréra Alvares Neto</b></sub></a><br /><a href="https://github.com/boyney123/mockit/commits?author=zecarrera" title="Code">💻</a></td>
-  </tr>
-</table>
+ullee
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
